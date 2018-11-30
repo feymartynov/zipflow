@@ -26,8 +26,8 @@ defmodule Zipflow.Spec.StoreEntry do
     :zlib.close(ctx[:private][:z])
     frame = << 0x08074b50  :: size(32)-little,
                ctx[:crc]   :: size(32)-little,
-               ctx[:csize] :: size(32)-little,
-               ctx[:usize] :: size(32)-little
+               ctx[:csize] :: size(64)-little,
+               ctx[:usize] :: size(64)-little
     >>
     ctx[:private][:printer].(frame)
     Map.delete(ctx, :private)
